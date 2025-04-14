@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Output.h"
 
-int main()
+void mainMenu()
 {
-	mainMenu();
+
 }
