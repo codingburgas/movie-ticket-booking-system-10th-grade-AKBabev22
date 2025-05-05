@@ -1,20 +1,68 @@
 #include <iostream>
 #include <fstream>
-#include <conio.h>
 #include <string>
 #include "Output.h"
 using namespace std;
 
-void mainMenu()
+void mainMenu(int count)
 {
-	string menuOutput;
+
+	string menuOutput, temp;
 
 	ifstream Menu("../Assets/Menus/mainMenu.txt");
 
-	while (getline(Menu, menuOutput))
+	switch(count)
 	{
-		cout << menuOutput << endl;
+
+
+
+		case 0:
+			for (int i = 0; i < 16; i++)
+			{
+				getline(Menu, menuOutput);
+				cout << menuOutput << endl;;
+			}
+
+			break;
+
+		case 1:
+			for (int i = 0; i < 33 && getline(Menu, menuOutput); i++)
+			{
+				if (i >= 17)
+				{
+					cout << menuOutput << endl;
+				}
+			}
+			break;
+
+		case 2:
+			for (int i = 0; i < 50 && getline(Menu, menuOutput); i++)
+			{
+				if (i >= 34)
+				{
+					cout << menuOutput << endl;
+				}
+			}
+			break;
+
+		case 3:
+			for (int i = 0; i < 67 && getline(Menu, menuOutput); i++)
+			{
+				if (i >= 51)
+				{
+					cout << menuOutput << endl;
+				}
+			}
+			break;
+
+		case 4:
+			for (int i = 0; i < 89 && getline(Menu, menuOutput); i++)
+			{
+				if (i >= 68)
+				{
+					cout << menuOutput << endl;
+				}
+			}
+			break;
 	}
-	
-	Menu.close();
 }
