@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include "Output.h"
+#include "auth.h"
 using namespace std;
 
 void mainMenu(int count)
@@ -67,4 +68,28 @@ void mainMenu(int count)
 			}
 			break;
 	}
+}
+
+void authMenu() {
+	int choice;
+
+	do {
+		cout << "\n=== Movie Ticket Booking System ===" << endl;
+		cout << "1. Register\n2. Login\n3. Exit\nEnter choice: ";
+		cin >> choice;
+
+		switch (choice) {
+		case 1:
+			registerUser();
+			break;
+		case 2:
+			loginUser(); // Assumes loginUser() calls mainMenu(0) on success
+			break;
+		case 3:
+			cout << "Goodbye!" << endl;
+			break;
+		default:
+			cout << "Invalid choice." << endl;
+		}
+	} while (choice != 3);
 }

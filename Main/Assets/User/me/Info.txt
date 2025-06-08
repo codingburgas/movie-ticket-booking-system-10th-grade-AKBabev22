@@ -1,2 +1,0 @@
-Username: me
-Password: yes

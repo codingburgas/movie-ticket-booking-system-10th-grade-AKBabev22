@@ -3,5 +3,5 @@
 using namespace std;
 int main()
 {
-	mainMenu(0);
+	authMenu();
 }
