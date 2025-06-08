@@ -79,15 +79,19 @@ void authMenu() {
 		cin >> choice;
 
 		switch (choice) {
+
 		case 1:
 			registerUser();
 			break;
+
 		case 2:
-			loginUser(); // Assumes loginUser() calls mainMenu(0) on success
+			loginUser(); 
 			break;
+
 		case 3:
 			cout << "Goodbye!" << endl;
 			break;
+
 		default:
 			cout << "Invalid choice." << endl;
 		}

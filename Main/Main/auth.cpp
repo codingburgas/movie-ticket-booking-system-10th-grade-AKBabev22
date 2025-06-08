@@ -1,15 +1,12 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <filesystem>
 #include "Output.h"
 #include "auth.h"
 using namespace std;
 namespace fs = std::filesystem;
 
-const string USER_FILE = "users.txt";
-
-const string BASE_USER_DIR = "../Assets/User";
+const string USER_FILE = "../Assets/User/UsersInfo.txt";
 
 bool userExists(const string& username) {
     ifstream file(USER_FILE);
@@ -37,42 +34,39 @@ void registerUser() {
     cout << "Enter password: ";
     cin >> password;
 
-    // Save to main user file
     ofstream file(USER_FILE, ios::app);
     file << username << " " << password << endl;
     file.close();
 
-    // Create user folder
-    string userFolderPath = BASE_USER_DIR + "\\" + username;
-    try {
-        if (!fs::exists(BASE_USER_DIR)) {
-            fs::create_directory(BASE_USER_DIR);
-        }
-        if (fs::create_directory(userFolderPath)) {
-            string infoFilePath = userFolderPath + "\\Info.txt";
-            ofstream infoFile(infoFilePath);
-            infoFile << "Username: " << username << endl;
-            infoFile << "Password: " << password << endl;
-            infoFile.close();
-            cout << "\nUser directory and Info.txt created successfully." << endl;
-        }
-        else {
-            cerr << "\nFailed to create user folder." << endl;
-        }
-    }
-    catch (const fs::filesystem_error& e) {
-        cerr << "Filesystem error: " << e.what() << endl;
-        return;
-    }
-
     system("cls");
     cout << "\nRegistration successful!" << endl;
 
-    // Send to main menu
     mainMenu(0);
 }
 
 
 bool loginUser() {
 
+    system("cls");
+
+    string username, password;
+    cout << "=== Login ===" << endl;
+    cout << "Enter username: ";
+    cin >> username;
+    cout << "Enter password: ";
+    cin >> password;
+
+    ifstream file(USER_FILE);
+    string user, pass;
+    while (file >> user >> pass) {
+        if (user == username && pass == password) {
+            cout << "\nLogin successful!" << endl;
+
+            mainMenu(0);
+            return true;
+        }
+    }
+
+    cout << "\nInvalid username or password!" << endl;
+    return false;
 }
