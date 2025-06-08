@@ -1,3 +1,4 @@
 #pragma once
+using namespace std;
 
-void mainMenu(int count);
+int mainMenu(int count);
