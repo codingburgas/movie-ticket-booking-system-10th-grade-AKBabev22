@@ -15,10 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="LocationDB.h">
+    <ClInclude Include="CinemaDB.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MovieDB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SeatDB.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
