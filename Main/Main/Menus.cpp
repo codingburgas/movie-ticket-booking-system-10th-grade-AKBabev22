@@ -6,135 +6,50 @@
 #include "auth.h"
 using namespace std;
 
-void mainMenu(int count)
+void mainMenu()
 {
+    int count = 0;
+    char arrow;
 
-	string menuOutput, temp;
-	char arrow;
+    while (true)
+    {
+        system("cls");
+        ifstream Menu("../Assets/Menus/mainMenu.txt");
+        string menuOutput;
 
-	ifstream Menu("../Assets/Menus/mainMenu.txt");
+        for (int i = 0; i < 89 && getline(Menu, menuOutput); i++)
+        {
+            if ((count == 0 && i < 16) ||
+                (count == 1 && i >= 17 && i < 33) ||
+                (count == 2 && i >= 34 && i < 50) ||
+                (count == 3 && i >= 51 && i < 67) ||
+                (count == 4 && i >= 68 && i < 89))
+            {
+                cout << menuOutput << endl;
+            }
+        }
 
-	switch(count)
-	{
-		case 0:
-			system("cls");
-			for (int i = 0; i < 16; i++)
-			{
-				getline(Menu, menuOutput);
-				cout << menuOutput << endl;;
-			}
+        arrow = _getch();
+        if (arrow == -32 || arrow == 224)
+        {
+            arrow = _getch();
+        }
 
-			arrow = _getch();
-
-			if ((int)arrow == 80)
-			{
-				mainMenu(1);
-			}
-
-			else if ((int)arrow == 72)
-			{
-				mainMenu(4);
-			}
-
-			break;
-
-		case 1:
-			system("cls");
-			for (int i = 0; i < 33 && getline(Menu, menuOutput); i++)
-			{
-				if (i >= 17)
-				{
-					cout << menuOutput << endl;
-				}
-			}
-
-			arrow = _getch();
-
-			if ((int)arrow == 80)
-			{
-				mainMenu(2);
-			}
-
-			else if ((int)arrow == 72)
-			{
-				mainMenu(0);
-			}
-
-			break;
-
-		case 2:
-			system("cls");
-			for (int i = 0; i < 50 && getline(Menu, menuOutput); i++)
-			{
-				if (i >= 34)
-				{
-					cout << menuOutput << endl;
-				}
-			}
-
-			arrow = _getch();
-
-			if ((int)arrow == 80)
-			{
-				mainMenu(3);
-			}
-
-			else if ((int)arrow == 72)
-			{
-				mainMenu(1);
-			}
-
-			break;
-
-		case 3:
-			system("cls");
-			for (int i = 0; i < 67 && getline(Menu, menuOutput); i++)
-			{
-				if (i >= 51)
-				{
-					cout << menuOutput << endl;
-				}
-			}
-
-			arrow = _getch();
-
-			if ((int)arrow == 80)
-			{
-				mainMenu(4);
-			}
-
-			else if ((int)arrow == 72)
-			{
-				mainMenu(2);
-			}
-
-			break;
-
-		case 4:
-			system("cls");
-			for (int i = 0; i < 89 && getline(Menu, menuOutput); i++)
-			{
-				if (i >= 68)
-				{
-					cout << menuOutput << endl;
-				}
-			}
-
-			arrow = _getch();
-
-			if ((int)arrow == 80)
-			{
-				mainMenu(0);
-			}
-
-			else if ((int)arrow == 72)
-			{
-				mainMenu(3);
-			}
-
-			break;
-	}
+        if (arrow == 80) 
+        {
+            count = (count + 1) % 5;
+        }
+        else if (arrow == 72) 
+        {
+            count = (count - 1 + 5) % 5;
+        }
+        else if (arrow == 13) 
+        {
+            break; 
+        }
+    }
 }
+
 
 void authMenu()
 {
