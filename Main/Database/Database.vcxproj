@@ -19,9 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BookingDatabase.cpp" />
+    <ClCompile Include="CardDatabase.cpp" />
     <ClCompile Include="MovieDatabase.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BookingDatabase.h" />
+    <ClInclude Include="CardDatabase.h" />
     <ClInclude Include="MovieDatabase.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

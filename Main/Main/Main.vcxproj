@@ -131,13 +131,17 @@
   <ItemGroup>
     <ClCompile Include="auth.cpp" />
     <ClCompile Include="Booking.cpp" />
+    <ClCompile Include="Extra.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menus.cpp" />
+    <ClCompile Include="CardManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="auth.h" />
     <ClInclude Include="Booking.h" />
+    <ClInclude Include="Extra.h" />
     <ClInclude Include="Output.h" />
+    <ClInclude Include="CardManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Database\Database.vcxproj">

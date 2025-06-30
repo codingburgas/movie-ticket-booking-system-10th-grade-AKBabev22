@@ -2,6 +2,10 @@
 #include <vector>
 #include <string>
 #include <conio.h>
+#include <ctime>
+#include <fstream>
+#include "CardManager.h"
+#include "Extra.h"
 #include "../Database/MovieDatabase.h"
 
 using namespace std;
@@ -10,6 +14,19 @@ struct SeatPos {
     int row;
     int col;
 };
+
+void saveTicket(const string& username, const string& theater, const string& hall, const string& movie, int seatNumber, const string& purchaseDate) 
+{
+    ofstream file("TicketsDatabase.txt", ios::app);
+    file << "Username: " << username << "\n";
+    file << "Theater: " << theater << "\n";
+    file << "Hall: " << hall << "\n";
+    file << "Movie: " << movie << "\n";
+    file << "SeatNumber: " << seatNumber << "\n";
+    file << "PurchaseDate: " << purchaseDate << "\n";
+    file << "----------------------\n";
+    file.close();
+}
 
 int selectSeat(const string& theaterName, const string& hallName, const string& movieTitle, const string& showtime) {
     const int rows = 10;
@@ -199,8 +216,72 @@ void startBookingFlow() {
             cout << "Seat Number (ID): " << selectedSeat + 1 << " (Row: " << selectedSeat / 15 + 1
                 << ", Col: " << selectedSeat % 15 + 1 << ")\n";
 
-            system("pause");
-            return;
+            cout << "\nChoose payment method:\n";
+            cout << "1. Pay online (credit card)\n";
+            cout << "2. Pay through ticket agent (cash or card)\n";
+            cout << "Select option: ";
+            int paymentChoice;
+            cin >> paymentChoice;
+
+            if (paymentChoice == 1) {
+                system("cls");
+                std::cout << "Enter your username: ";
+                std::string username;
+                std::cin >> username;
+
+                CardManager cardManager(username);
+                cardManager.loadCards();
+
+                int cardIndex = cardManager.displayCardMenu();
+                if (cardIndex == -1) {
+                    std::cout << "\nPayment cancelled.\n";
+                    system("pause");
+                    return;
+                }
+
+                Card selectedCard = cardManager.getCards()[cardIndex];
+
+                system("cls");
+                std::cout << "You selected card: " << selectedCard.cardName << "\n";
+                std::cout << "Card Number: " << selectedCard.cardNumber << "\n";
+                std::cout << "Expiry Date: " << selectedCard.expiryDate << "\n";
+
+                // Here you would normally do the real payment processing...
+                // For now, simulate success:
+                std::cout << "\nProcessing payment...\n";
+                system("pause");
+
+                // After successful payment, save ticket info
+                std::string purchaseDate = getCurrentDate();
+                std::string hallName = selectedTheater.halls[movieSelections[movieChoice - 1].hallIndex].name;
+
+                saveTicket(username, selectedTheater.name, hallName, selectedMovie.title, selectedSeat + 1, purchaseDate);
+
+                std::cout << "\nPayment successful! Booking confirmed and ticket saved.\n";
+                system("pause");
+                return;
+            }
+
+            else if (paymentChoice == 2) {
+                cout << "\nEnter your username: ";
+                string username;
+                cin >> username;
+
+                string purchaseDate = getCurrentDate();
+                string hallName = selectedTheater.halls[movieSelections[movieChoice - 1].hallIndex].name;
+
+                saveTicket(username, selectedTheater.name, hallName, selectedMovie.title, selectedSeat + 1, purchaseDate);
+
+                cout << "\nWARNING: Paying through ticket agent must be done at least 1 hour before the movie else your booking will get canceled\n";
+                cout << "\nBooking confirmed! Your ticket has been saved.\n";
+                system("pause");
+                return;
+            }
+            else {
+                cout << "Invalid payment option.\n";
+                system("pause");
+                return;
+            }
         }
     }
 }

@@ -1,6 +1,3 @@
-#ifndef MOVIEDATABASE_H
-#define MOVIEDATABASE_H
-
 #include <string>
 #include <vector>
 
@@ -30,4 +27,3 @@ vector<Theater> loadDatabase(const std::string& filename);
 vector<int> loadBookedSeats(const string& theaterName, const string& hallName, const string& movieTitle, const string& showtime);
 
 void saveBookedSeats(const string& theaterName, const string& hallName, const string& movieTitle, const string& showtime, const vector<int>& bookedSeats);
-#endif 
