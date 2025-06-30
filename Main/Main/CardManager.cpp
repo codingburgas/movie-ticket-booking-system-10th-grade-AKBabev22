@@ -3,9 +3,8 @@
 #include <iostream>
 #include <limits>
 
-// Constructor: Initializes a CardManager with a username and generates a filename for storing cards
 CardManager::CardManager(const std::string& username) : username(username) {
-    filename = "cards_" + username + ".txt";
+    filename = "../Database/Database/cards_" + username + ".txt";
 }
 
 // Loads saved card data from the user's file into memory

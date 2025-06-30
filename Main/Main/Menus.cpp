@@ -1,5 +1,4 @@
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <conio.h>
 #include "Output.h"
@@ -7,57 +6,58 @@
 #include "Booking.h"
 using namespace std;
 
-void mainMenu() {
-    int count = 0;
-    char arrow;
+#include <iostream>
+using namespace std;
 
+void mainMenu() {
     while (true) {
         system("cls");
-        ifstream Menu("../Assets/Menus/mainMenu.txt");
-        string menuOutput;
+        cout << "=== Main Menu ===\n";
+        cout << "1. View Movies\n";
+        cout << "2. Choose Location\n";
+        cout << "3. Book Tickets\n";
+        cout << "4. View Purchases\n";
+        cout << "5. Logout\n";
+        cout << "Select an option (1-5): ";
 
-        for (int i = 0; i < 89 && getline(Menu, menuOutput); i++) {
-            if ((count == 0 && i < 16) ||
-                (count == 1 && i >= 17 && i < 33) ||
-                (count == 2 && i >= 34 && i < 50) ||
-                (count == 3 && i >= 51 && i < 67) ||
-                (count == 4 && i >= 68 && i < 89)) {
-                cout << menuOutput << endl;
-            }
+        int choice;
+        cin >> choice;
+
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input. Please enter a number between 1 and 5.\n";
+            system("pause");
+            continue;
         }
 
-        arrow = _getch();
-        if (arrow == -32 || arrow == 224) {
-            arrow = _getch();
+        switch (choice) {
+        case 1:
+            viewMovies();
+            break;
+        case 2:
+            // Choose Location
+            cout << "Choosing location...\n";
+            break;
+        case 3:
+            startBookingFlow();
+            break;
+        case 4:
+            // Purchases
+            cout << "Viewing purchases...\n";
+            break;
+        case 5:
+            logoutUser();
+            return;
+        default:
+            cout << "Invalid choice. Please select a number between 1 and 5.\n";
+            break;
         }
 
-        if (arrow == 80) {
-            count = (count + 1) % 5;
-        }
-        else if (arrow == 72) {
-            count = (count - 1 + 5) % 5;
-        }
-        else if (arrow == 13) {
-            switch (count) {
-            case 0:
-                // View Movies
-                break;
-            case 1:
-                // Choose Location
-                break;
-            case 2:
-                startBookingFlow();
-                break;
-            case 3:
-                // Purchases
-                break;
-            case 4:
-                logoutUser();
-                return;
-            }
-        }
+        system("pause");
     }
 }
+
 
 
 

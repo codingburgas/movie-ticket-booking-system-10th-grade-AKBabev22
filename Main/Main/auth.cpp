@@ -5,8 +5,8 @@
 #include "auth.h"
 using namespace std;
 
-const string USER_FILE = "../Assets/User/UsersInfo.txt";
-const string SESSION_FILE = "../Assets/User/UserSession.txt";
+const string USER_FILE = "../Database/Database/User/UsersInfo.txt";
+const string SESSION_FILE = "../Database/Database/User/UserSession.txt";
 
 bool userExists(string username)
 {

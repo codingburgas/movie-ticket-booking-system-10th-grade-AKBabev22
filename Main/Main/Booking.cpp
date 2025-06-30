@@ -6,7 +6,7 @@
 #include <fstream>
 #include "CardManager.h"
 #include "Extra.h"
-#include "../Database/MovieDatabase.h"
+#include "../Database/Database.h"
 
 using namespace std;
 
@@ -17,7 +17,7 @@ struct SeatPos {
 
 void saveTicket(const string& username, const string& theater, const string& hall, const string& movie, int seatNumber, const string& purchaseDate) 
 {
-    ofstream file("TicketsDatabase.txt", ios::app);
+    ofstream file("../Database/Database/TicketsDatabase.txt", ios::app);
     file << "Username: " << username << "\n";
     file << "Theater: " << theater << "\n";
     file << "Hall: " << hall << "\n";
@@ -112,7 +112,7 @@ int selectSeat(const string& theaterName, const string& hallName, const string& 
 void startBookingFlow() {
     system("cls");
 
-    vector<Theater> theaters = loadDatabase("../Database/Database.txt");
+    vector<Theater> theaters = loadDatabase("../Database/Database/Database.txt");
 
     if (theaters.empty()) {
         cout << "No theaters found in database.\n";
@@ -246,12 +246,9 @@ void startBookingFlow() {
                 std::cout << "Card Number: " << selectedCard.cardNumber << "\n";
                 std::cout << "Expiry Date: " << selectedCard.expiryDate << "\n";
 
-                // Here you would normally do the real payment processing...
-                // For now, simulate success:
                 std::cout << "\nProcessing payment...\n";
                 system("pause");
 
-                // After successful payment, save ticket info
                 std::string purchaseDate = getCurrentDate();
                 std::string hallName = selectedTheater.halls[movieSelections[movieChoice - 1].hallIndex].name;
 

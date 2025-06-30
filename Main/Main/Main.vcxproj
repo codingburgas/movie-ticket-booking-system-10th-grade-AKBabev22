@@ -130,6 +130,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="auth.cpp" />
+    <ClCompile Include="AvaliableMovies.cpp" />
     <ClCompile Include="Booking.cpp" />
     <ClCompile Include="Extra.cpp" />
     <ClCompile Include="main.cpp" />

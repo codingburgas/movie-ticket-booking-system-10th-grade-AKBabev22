@@ -19,14 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BookingDatabase.cpp" />
-    <ClCompile Include="CardDatabase.cpp" />
-    <ClCompile Include="MovieDatabase.cpp" />
+    <ClCompile Include="Database.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BookingDatabase.h" />
-    <ClInclude Include="CardDatabase.h" />
-    <ClInclude Include="MovieDatabase.h" />
+    <ClInclude Include="Database.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

@@ -1,4 +1,4 @@
-#include "MovieDatabase.h"
+#include "Database.h"
 #include <fstream>
 #include <sstream>
 #include <iostream>
@@ -46,7 +46,7 @@ vector<Theater> loadDatabase(const string& filename)
                 theaters.push_back(currentTheater);
                 currentTheater = Theater();
             }
-            currentTheater.name = trim(line.substr(8)); // length of "Theater:"
+            currentTheater.name = trim(line.substr(8)); 
         }
         else if (line.find("Hall:") == 0) {
             if (!currentMovie.title.empty()) {
@@ -57,26 +57,26 @@ vector<Theater> loadDatabase(const string& filename)
                 currentTheater.halls.push_back(currentHall);
             }
             currentHall = Hall();
-            currentHall.name = trim(line.substr(5)); // length of "Hall:"
+            currentHall.name = trim(line.substr(5)); 
         }
         else if (line.find("Movie:") == 0) {
             if (!currentMovie.title.empty()) {
                 currentHall.movies.push_back(currentMovie);
             }
             currentMovie = Movie();
-            currentMovie.title = trim(line.substr(6)); // length of "Movie:"
+            currentMovie.title = trim(line.substr(6)); 
         }
         else if (line.find("Language:") == 0) {
-            currentMovie.language = trim(line.substr(9)); // length of "Language:"
+            currentMovie.language = trim(line.substr(9)); 
         }
         else if (line.find("Genre:") == 0) {
-            currentMovie.genre = trim(line.substr(6)); // length of "Genre:"
+            currentMovie.genre = trim(line.substr(6)); 
         }
         else if (line.find("ReleaseDate:") == 0) {
-            currentMovie.releaseDate = trim(line.substr(12)); // length of "ReleaseDate:"
+            currentMovie.releaseDate = trim(line.substr(12)); 
         }
         else if (line.find("Showtimes:") == 0) {
-            stringstream ss(trim(line.substr(10))); // length of "Showtimes:"
+            stringstream ss(trim(line.substr(10))); 
             string time;
             currentMovie.showtimes.clear();
             while (getline(ss, time, ',')) {
@@ -101,7 +101,7 @@ vector<Theater> loadDatabase(const string& filename)
 
 vector<int> loadBookedSeats(const string& theaterName, const string& hallName, const string& movieTitle, const string& showtime) {
     vector<int> bookedSeats;
-    ifstream file("../Database/seatBookings.txt");
+    ifstream file("../Database/Database/seatBookings.txt");
     string line;
 
     bool match = false;

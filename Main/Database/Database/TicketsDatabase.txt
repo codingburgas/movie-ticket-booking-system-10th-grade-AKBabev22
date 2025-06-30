@@ -1,0 +1,14 @@
+Username: Anton
+Theater: Theater 1
+Hall: Hall 2
+Movie: Inside Out 2
+SeatNumber: 84
+PurchaseDate: 2025-06-30
+----------------------
+Username: 121w
+Theater: Theater 1
+Hall: Hall 2
+Movie: Inside Out 2
+SeatNumber: 1
+PurchaseDate: 2025-07-01
+----------------------
