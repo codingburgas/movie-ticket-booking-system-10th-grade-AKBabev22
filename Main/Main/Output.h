@@ -1,7 +1,7 @@
 #pragma once
 using namespace std;
 
-void mainMenu();
+void mainMenu(string username);
 
 void authMenu();
 

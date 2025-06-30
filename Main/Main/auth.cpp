@@ -50,7 +50,7 @@ void registerUser()
 
     cout << "Registration successful!" << endl;
 
-    mainMenu();
+    mainMenu(username);
 }
 
 bool isSessionValid(string& loggedInUser)
@@ -121,7 +121,7 @@ bool loginUser()
             sessionOut << username << " " << now;
             sessionOut.close();
 
-            mainMenu(); 
+            mainMenu(username); 
             return true;
         }
     }

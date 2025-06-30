@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include "../Database/Database.h" 
+#include "Extra.h"
 #include "Output.h"
 
 using namespace std;
@@ -45,5 +46,5 @@ void viewMovies() {
     cout << "Press enter to go back." << "\n\n";
     system("pause");
 
-    mainMenu();
+    mainMenu(getCurrentUser());
 }

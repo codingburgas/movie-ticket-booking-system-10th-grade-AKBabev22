@@ -12,3 +12,17 @@ Movie: Inside Out 2
 SeatNumber: 1
 PurchaseDate: 2025-07-01
 ----------------------
+Username: 12312
+Theater: Theater 1
+Hall: Hall 1
+Movie: Spider-Man
+SeatNumber: 1
+PurchaseDate: 2025-07-01
+----------------------
+Username: Anton
+Theater: Theater 1
+Hall: Hall 2
+Movie: Inside Out 2
+SeatNumber: 1
+PurchaseDate: 2025-07-01
+----------------------

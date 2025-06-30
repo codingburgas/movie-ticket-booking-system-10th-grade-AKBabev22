@@ -2,23 +2,22 @@
 #include <string>
 #include <conio.h>
 #include "Output.h"
+#include "Extra.h"
 #include "auth.h"
 #include "Booking.h"
+#include "../Database/Purchases.h"
 using namespace std;
 
-#include <iostream>
-using namespace std;
-
-void mainMenu() {
+void mainMenu(string username) {
     while (true) {
         system("cls");
         cout << "=== Main Menu ===\n";
         cout << "1. View Movies\n";
-        cout << "2. Choose Location\n";
-        cout << "3. Book Tickets\n";
-        cout << "4. View Purchases\n";
-        cout << "5. Logout\n";
-        cout << "Select an option (1-5): ";
+        cout << "2. Book Tickets\n";
+        cout << "3. View Purchases\n";
+        cout << "4. Logout\n";
+        cout << "5. Exit\n";
+        cout << "Your choice: ";
 
         int choice;
         cin >> choice;
@@ -36,18 +35,16 @@ void mainMenu() {
             viewMovies();
             break;
         case 2:
-            // Choose Location
-            cout << "Choosing location...\n";
-            break;
-        case 3:
             startBookingFlow();
             break;
+        case 3:
+            viewPurchases(username);
+            break;
         case 4:
-            // Purchases
-            cout << "Viewing purchases...\n";
+            logoutUser();
             break;
         case 5:
-            logoutUser();
+            cout << "Thank you for choosing us.\n";
             return;
         default:
             cout << "Invalid choice. Please select a number between 1 and 5.\n";
@@ -66,16 +63,15 @@ void authMenu() {
     int choice;
     string loggedInUser;
 
-    // Check if the session is still valid before showing options
     if (isSessionValid(loggedInUser)) {
-        mainMenu();  
+        mainMenu(loggedInUser);
         return;
     }
 
     do {
         system("cls");
 
-        cout << "=== Movie Ticket Booking System ===" << endl;
+        cout << "=== Authentication ===" << endl;
         cout << "1. Register" << endl;
         cout << "2. Login" << endl;
         cout << "3. Exit" << endl;
@@ -101,7 +97,7 @@ void authMenu() {
 
         // Re-check session after login attempt
         if (isSessionValid(loggedInUser)) {
-            mainMenu();
+            mainMenu(getCurrentUser());
             break;
         }
 

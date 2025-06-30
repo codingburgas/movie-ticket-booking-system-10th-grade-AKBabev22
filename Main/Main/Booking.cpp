@@ -225,9 +225,8 @@ void startBookingFlow() {
 
             if (paymentChoice == 1) {
                 system("cls");
-                std::cout << "Enter your username: ";
-                std::string username;
-                std::cin >> username;
+
+                string username = getCurrentUser();
 
                 CardManager cardManager(username);
                 cardManager.loadCards();
