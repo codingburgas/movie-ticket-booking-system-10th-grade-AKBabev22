@@ -1,0 +1,19 @@
+Theater: Theater 1
+  Hall: Hall 1
+    Movie: Spider-Man
+    Language: English
+    Genre: Action
+    ReleaseDate: 2023-07-10
+    Showtimes: 10:00,13:00,16:00,19:00,22:00
+  Hall: Hall 2
+    Movie: Inside Out 2
+    Language: English
+    Genre: Animation
+    ReleaseDate: 2024-06-15
+    Showtimes: 11:00,14:00,17:00,20:00
+  Hall: Hall 3
+    Movie: Dune
+    Language: English
+    Genre: Sci-Fi
+    ReleaseDate: 2024-03-01
+    Showtimes: 10:30,13:30,16:30,19:30,22:30

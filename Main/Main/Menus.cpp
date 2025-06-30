@@ -6,79 +6,103 @@
 #include "auth.h"
 using namespace std;
 
-void mainMenu()
-{
+void mainMenu() {
     int count = 0;
     char arrow;
 
-    while (true)
-    {
+    while (true) {
         system("cls");
         ifstream Menu("../Assets/Menus/mainMenu.txt");
         string menuOutput;
 
-        for (int i = 0; i < 89 && getline(Menu, menuOutput); i++)
-        {
+        for (int i = 0; i < 89 && getline(Menu, menuOutput); i++) {
             if ((count == 0 && i < 16) ||
                 (count == 1 && i >= 17 && i < 33) ||
                 (count == 2 && i >= 34 && i < 50) ||
                 (count == 3 && i >= 51 && i < 67) ||
-                (count == 4 && i >= 68 && i < 89))
-            {
+                (count == 4 && i >= 68 && i < 89)) {
                 cout << menuOutput << endl;
             }
         }
 
         arrow = _getch();
-        if (arrow == -32 || arrow == 224)
-        {
+        if (arrow == -32 || arrow == 224) {
             arrow = _getch();
         }
 
-        if (arrow == 80) 
-        {
+        if (arrow == 80) {
             count = (count + 1) % 5;
         }
-        else if (arrow == 72) 
-        {
+        else if (arrow == 72) {
             count = (count - 1 + 5) % 5;
         }
-        else if (arrow == 13) 
-        {
-            break; 
+        else if (arrow == 13) {
+            switch (count) {
+            case 0:
+                // View Movies
+                break;
+            case 1:
+                // Choose Location
+                break;
+            case 2:
+                //Booking
+                break;
+            case 3:
+                // Purchases
+                break;
+            case 4:
+                logoutUser();
+                return;
+            }
         }
     }
 }
 
 
-void authMenu()
-{
-	int choice;
 
-	do 
-	{
-		cout << "=== Movie Ticket Booking System ===" << endl;
-		cout << "1. Register" << endl << "2. Login" << endl << "3. Exit" << endl << "Enter choice : ";
+void authMenu() {
+    int choice;
+    string loggedInUser;
 
-		cin >> choice;
+    // Check if the session is still valid before showing options
+    if (isSessionValid(loggedInUser)) {
+        mainMenu();  
+        return;
+    }
 
-		switch (choice) 
-		{
+    do {
+        system("cls");
 
-		case 1:
-			registerUser();
-			break;
+        cout << "=== Movie Ticket Booking System ===" << endl;
+        cout << "1. Register" << endl;
+        cout << "2. Login" << endl;
+        cout << "3. Exit" << endl;
+        cout << "Enter choice: ";
+        cin >> choice;
 
-		case 2:
-			loginUser(); 
-			break;
+        switch (choice) {
+        case 1:
+            registerUser();
+            break;
 
-		case 3:
-			cout << "Goodbye!" << endl;
-			break;
+        case 2:
+            loginUser(); 
+            break;
 
-		default:
-			cout << "Invalid choice." << endl;
-		}
-	} while (choice != 3);
+        case 3:
+            cout << "Goodbye!" << endl;
+            break;
+
+        default:
+            cout << "Invalid choice." << endl;
+        }
+
+        // Re-check session after login attempt
+        if (isSessionValid(loggedInUser)) {
+            mainMenu();
+            break;
+        }
+
+    } while (choice != 3);
 }
+

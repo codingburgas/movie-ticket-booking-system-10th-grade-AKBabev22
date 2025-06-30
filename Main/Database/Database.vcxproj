@@ -18,6 +18,12 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MovieDatabase.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MovieDatabase.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -126,18 +132,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="Cinema.h" />
-    <ClInclude Include="Hall.h" />
-    <ClInclude Include="Movie.h" />
-    <ClInclude Include="Show.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Cinema.cpp" />
-    <ClCompile Include="Hall.cpp" />
-    <ClCompile Include="Movie.cpp" />
-    <ClCompile Include="Show.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -6,6 +6,7 @@
 using namespace std;
 
 const string USER_FILE = "../Assets/User/UsersInfo.txt";
+const string SESSION_FILE = "../Assets/User/UserSession.txt";
 
 bool userExists(string username)
 {
@@ -49,12 +50,52 @@ void registerUser()
 
     cout << "Registration successful!" << endl;
 
-    mainMenu(0);
+    mainMenu();
 }
 
+bool isSessionValid(string& loggedInUser)
+{
+    ifstream sessionIn(SESSION_FILE);
 
-bool loginUser() {
+    if (!sessionIn.is_open()) 
+    {
+        return false; 
+    }
 
+    string username;
+    time_t loginTime;
+
+    if (!(sessionIn >> username >> loginTime)) 
+    {
+        sessionIn.close();
+        return false; 
+    }
+
+    sessionIn.close();
+
+    time_t currentTime = time(0);
+    double secondsPassed = difftime(currentTime, loginTime);
+
+    if (secondsPassed < 7200) 
+    {
+        loggedInUser = username;
+        return true;
+    }
+
+    // Session expired
+    ofstream clear(SESSION_FILE, ios::trunc);
+    clear.close();
+    return false;
+}
+
+void logoutUser() 
+{
+    ofstream clear(SESSION_FILE, ios::trunc);
+    clear.close();
+}
+
+bool loginUser()
+{
     system("cls");
 
     string username, password;
@@ -68,19 +109,23 @@ bool loginUser() {
     ifstream file(USER_FILE);
     string user, pass;
 
-    while (file >> user >> pass) 
+    while (file >> user >> pass)
     {
         if (user == username && pass == password)
         {
             cout << "Login successful!" << endl;
 
-            mainMenu(0);
+            // Save session
+            ofstream sessionOut(SESSION_FILE);
+            time_t now = time(0);
+            sessionOut << username << " " << now;
+            sessionOut.close();
 
+            mainMenu(); 
             return true;
         }
     }
 
     cout << "Invalid username or password!" << endl;
-
     return false;
 }

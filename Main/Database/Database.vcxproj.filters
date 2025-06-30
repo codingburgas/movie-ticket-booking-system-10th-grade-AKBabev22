@@ -15,31 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Cinema.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Movie.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Show.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Hall.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClCompile Include="MovieDatabase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Movie.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Cinema.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Show.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Hall.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="MovieDatabase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
