@@ -130,12 +130,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="auth.cpp" />
+    <ClCompile Include="Booking.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menus.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="auth.h" />
+    <ClInclude Include="Booking.h" />
     <ClInclude Include="Output.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Database\Database.vcxproj">
+      <Project>{7661c3d4-e879-4142-99e6-a44d5e139c43}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

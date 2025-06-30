@@ -24,12 +24,18 @@
     <ClCompile Include="auth.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Booking.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Output.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="auth.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Booking.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

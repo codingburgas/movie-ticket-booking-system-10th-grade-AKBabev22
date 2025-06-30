@@ -1,0 +1,5 @@
+Theater: Theater 1
+Hall: Hall 2
+Movie: Inside Out 2
+Showtime: 17:00
+BookedSeats: 3

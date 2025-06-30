@@ -4,6 +4,7 @@
 #include <conio.h>
 #include "Output.h"
 #include "auth.h"
+#include "Booking.h"
 using namespace std;
 
 void mainMenu() {
@@ -45,7 +46,7 @@ void mainMenu() {
                 // Choose Location
                 break;
             case 2:
-                //Booking
+                startBookingFlow();
                 break;
             case 3:
                 // Purchases
@@ -57,6 +58,7 @@ void mainMenu() {
         }
     }
 }
+
 
 
 
