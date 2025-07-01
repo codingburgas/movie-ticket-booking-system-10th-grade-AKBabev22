@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cstdlib>
 #include <conio.h>
 #include "Output.h"
 #include "Extra.h"
@@ -8,8 +9,10 @@
 #include "../Database/Purchases.h"
 using namespace std;
 
-void mainMenu(string username) {
-    while (true) {
+void mainMenu(string username) 
+{
+    while (true) 
+    {
         system("cls");
         cout << "=== Main Menu ===\n";
         cout << "1. View Movies\n";
@@ -22,30 +25,41 @@ void mainMenu(string username) {
         int choice;
         cin >> choice;
 
-        if (cin.fail()) {
+        if (cin.fail())
+        {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Invalid input. Please enter a number between 1 and 5.\n";
             system("pause");
+
             continue;
         }
 
-        switch (choice) {
+        switch (choice) 
+        {
         case 1:
             viewMovies();
             break;
+
         case 2:
             startBookingFlow();
             break;
+
         case 3:
             viewPurchases(username);
             break;
+
         case 4:
             logoutUser();
             break;
+
         case 5:
             cout << "Thank you for choosing us.\n";
+            system("pause");
+
+            exit(1);
             return;
+
         default:
             cout << "Invalid choice. Please select a number between 1 and 5.\n";
             break;
@@ -59,16 +73,19 @@ void mainMenu(string username) {
 
 
 
-void authMenu() {
+void authMenu() 
+{
     int choice;
     string loggedInUser;
 
-    if (isSessionValid(loggedInUser)) {
+    if (isSessionValid(loggedInUser)) 
+    {
         mainMenu(loggedInUser);
         return;
     }
 
-    do {
+    do 
+    {
         system("cls");
 
         cout << "=== Authentication ===" << endl;
@@ -78,7 +95,8 @@ void authMenu() {
         cout << "Enter choice: ";
         cin >> choice;
 
-        switch (choice) {
+        switch (choice) 
+        {
         case 1:
             registerUser();
             break;
@@ -89,6 +107,10 @@ void authMenu() {
 
         case 3:
             cout << "Goodbye!" << endl;
+            system("pause");
+
+            exit(1);
+
             break;
 
         default:
@@ -96,7 +118,8 @@ void authMenu() {
         }
 
         // Re-check session after login attempt
-        if (isSessionValid(loggedInUser)) {
+        if (isSessionValid(loggedInUser))
+        {
             mainMenu(getCurrentUser());
             break;
         }

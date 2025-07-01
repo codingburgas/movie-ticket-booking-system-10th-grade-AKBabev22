@@ -129,6 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Database\Purchases.cpp" />
     <ClCompile Include="auth.cpp" />
     <ClCompile Include="AvaliableMovies.cpp" />
     <ClCompile Include="Booking.cpp" />
@@ -138,6 +139,7 @@
     <ClCompile Include="CardManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Database\Purchases.h" />
     <ClInclude Include="auth.h" />
     <ClInclude Include="Booking.h" />
     <ClInclude Include="Extra.h" />

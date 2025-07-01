@@ -17,9 +17,14 @@ bool userExists(string username)
     {
         if (user == username) 
         {
+            file.close();
+
             return true;
         }
     }
+
+    file.close();
+
     return false;
 }
 
@@ -35,6 +40,7 @@ void registerUser()
     if (userExists(username))
     {
         cout << "Username already exists. Try a different one." << endl;
+        system("pause");
         return;
     }
 
@@ -49,6 +55,8 @@ void registerUser()
     system("cls");
 
     cout << "Registration successful!" << endl;
+
+    system("pause");
 
     mainMenu(username);
 }
@@ -92,6 +100,13 @@ void logoutUser()
 {
     ofstream clear(SESSION_FILE, ios::trunc);
     clear.close();
+
+    system("cls");
+
+    cout << "Logout successful." << endl;
+    system("pause");
+
+    authMenu();
 }
 
 bool loginUser()
@@ -102,8 +117,11 @@ bool loginUser()
 
     cout << "=== Login ===" << endl;
     cout << "Enter username: ";
+
     cin >> username;
+
     cout << "Enter password: ";
+
     cin >> password;
 
     ifstream file(USER_FILE);
@@ -114,6 +132,8 @@ bool loginUser()
         if (user == username && pass == password)
         {
             cout << "Login successful!" << endl;
+
+            system("pause");
 
             // Save session
             ofstream sessionOut(SESSION_FILE);
@@ -127,5 +147,8 @@ bool loginUser()
     }
 
     cout << "Invalid username or password!" << endl;
+
+    system("pause");
+
     return false;
 }

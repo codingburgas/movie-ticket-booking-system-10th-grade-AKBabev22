@@ -2,7 +2,8 @@
 #include <string>
 #include <vector>
 
-struct Card {
+struct Card 
+{
     std::string cardName;     
     std::string cardNumber;
     std::string expiryDate;   

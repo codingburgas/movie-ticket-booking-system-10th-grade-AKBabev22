@@ -1,19 +1,121 @@
-Theater: Theater 1
-  Hall: Hall 1
-    Movie: Spider-Man
+Theater: Cinema (East)
+
+  Hall: 1
+
+    Movie: Spider-Man: No Way Home
     Language: English
     Genre: Action
-    ReleaseDate: 2023-07-10
+    ReleaseDate: 2021-12-17
     Showtimes: 10:00,13:00,16:00,19:00,22:00
-  Hall: Hall 2
+  Hall: 2
+
     Movie: Inside Out 2
     Language: English
     Genre: Animation
-    ReleaseDate: 2024-06-15
+    ReleaseDate: 2024-06-14
     Showtimes: 11:00,14:00,17:00,20:00
-  Hall: Hall 3
-    Movie: Dune
+  Hall: 3
+
+    Movie: Dune: Part Two
     Language: English
     Genre: Sci-Fi
     ReleaseDate: 2024-03-01
     Showtimes: 10:30,13:30,16:30,19:30,22:30
+
+
+Theater: Cinema (Center)
+
+  Hall: 1
+
+    Movie: The Batman
+    Language: English
+    Genre: Action
+    ReleaseDate: 2022-03-04
+    Showtimes: 10:15,13:15,16:15,19:15,22:15
+  Hall: 2
+
+    Movie: Encanto
+    Language: English
+    Genre: Animation
+    ReleaseDate: 2021-11-24
+    Showtimes: 11:15,14:15,17:15,20:15
+  Hall: 3
+
+    Movie: Oppenheimer
+    Language: English
+    Genre: Drama
+    ReleaseDate: 2023-07-21
+    Showtimes: 10:45,13:45,16:45,19:45,22:45
+
+
+Theater: Cinema (West)
+
+  Hall: 1
+    Movie: Barbie
+    Language: English
+    Genre: Comedy
+    ReleaseDate: 2023-07-21
+    Showtimes: 09:30,12:30,15:30,18:30,21:30
+
+  Hall: 2
+    Movie: Avatar: The Way of Water
+    Language: English
+    Genre: Sci-Fi
+    ReleaseDate: 2022-12-16
+    Showtimes: 10:00,13:30,17:00,20:30
+
+  Hall: 3
+    Movie: The Super Mario Bros. Movie
+    Language: English
+    Genre: Animation
+    ReleaseDate: 2023-04-05
+    Showtimes: 09:45,12:45,15:45,18:45,21:45
+
+
+Theater: Cinema (North)
+  Hall: 1
+
+    Movie: John Wick: Chapter 4
+    Language: English
+    Genre: Action
+    ReleaseDate: 2023-03-24
+    Showtimes: 10:00,13:00,16:00,19:00,22:00
+  Hall: 2
+
+    Movie: Elemental
+    Language: English
+    Genre: Animation
+    ReleaseDate: 2023-06-16
+    Showtimes: 11:00,14:00,17:00,20:00
+  Hall: 3
+
+    Movie: Mission: Impossible – Dead Reckoning Part One
+    Language: English
+    Genre: Action
+    ReleaseDate: 2023-07-12
+    Showtimes: 10:30,13:30,16:30,19:30,22:30
+
+
+Theater: Cinema (South)
+
+  Hall: 1
+
+    Movie: The Marvels
+    Language: English
+    Genre: Action
+    ReleaseDate: 2023-11-10
+    Showtimes: 09:50,12:50,15:50,18:50,21:50
+  Hall: 2
+
+    Movie: Turning Red
+    Language: English
+    Genre: Animation
+    ReleaseDate: 2022-03-11
+    Showtimes: 10:10,13:10,16:10,19:10
+  Hall: 3
+
+    Movie: Killers of the Flower Moon
+    Language: English
+    Genre: Crime Drama
+    ReleaseDate: 2023-10-20
+    Showtimes: 09:40,13:00,16:20,19:40

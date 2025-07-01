@@ -3,26 +3,29 @@
 
 using namespace std;
 
-struct Movie {
+struct Movie 
+{
     string title;
     string language;
     string genre;
     string releaseDate;
-    vector<std::string> showtimes;
+    vector<string> showtimes;
 };
 
-struct Hall {
+struct Hall
+{
     string name;
     vector<Movie> movies;
 };
 
-struct Theater {
+struct Theater 
+{
     string name;
     vector<Hall> halls;
 };
 
 
-vector<Theater> loadDatabase(const std::string& filename);
+vector<Theater> loadDatabase(const string& filename);
 
 vector<int> loadBookedSeats(const string& theaterName, const string& hallName, const string& movieTitle, const string& showtime);
 

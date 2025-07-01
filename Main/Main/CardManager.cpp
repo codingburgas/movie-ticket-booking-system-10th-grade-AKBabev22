@@ -3,25 +3,30 @@
 #include <iostream>
 #include <limits>
 
-CardManager::CardManager(const std::string& username) : username(username) {
+using namespace std;
+
+CardManager::CardManager(const string& username) : username(username)
+{
     filename = "../Database/Database/cards_" + username + ".txt";
 }
 
 // Loads saved card data from the user's file into memory
-void CardManager::loadCards() {
+void CardManager::loadCards() 
+{
     cards.clear();
-    std::ifstream file(filename);
+    ifstream file(filename);
     if (!file.is_open()) return;
 
-    std::string line;
-    while (std::getline(file, line)) {
+    string line;
+    while (getline(file, line))
+    {
         if (line.empty()) continue;
 
         Card c;
         c.cardName = line;
 
-        if (!std::getline(file, c.cardNumber)) break;
-        if (!std::getline(file, c.expiryDate)) break;
+        if (!getline(file, c.cardNumber)) break;
+        if (!getline(file, c.expiryDate)) break;
 
         cards.push_back(c);
     }
@@ -29,79 +34,96 @@ void CardManager::loadCards() {
 }
 
 // Saves all loaded cards to the user's file, overwriting any existing content
-void CardManager::saveCards() const {
-    std::ofstream file(filename, std::ios::trunc);
-    for (const auto& c : cards) {
-        file << c.cardName << "\n"
-            << c.cardNumber << "\n"
-            << c.expiryDate << "\n";
+void CardManager::saveCards() const
+{
+    ofstream file(filename, ios::trunc);
+
+    for (const auto& c : cards)
+    {
+        file << c.cardName << "\n" << c.cardNumber << "\n" << c.expiryDate << "\n";
     }
 }
 
 // Displays a menu for the user to select a saved card or add a new one
-int CardManager::displayCardMenu() {
-    while (true) {
+int CardManager::displayCardMenu()
+{
+    while (true)
+    {
         system("cls");
-        std::cout << "=== Saved Cards for " << username << " ===\n";
-        for (size_t i = 0; i < cards.size(); ++i) {
-            std::cout << i + 1 << ". " << cards[i].cardName << "\n";
+
+        cout << "=== Saved Cards for " << username << " ===\n";
+
+        for (size_t i = 0; i < cards.size(); ++i) 
+        {
+            cout << i + 1 << ". " << cards[i].cardName << "\n";
         }
-        std::cout << cards.size() + 1 << ". Add new card\n";
-        std::cout << cards.size() + 2 << ". Cancel\n";
-        std::cout << "Select option: ";
+
+        cout << cards.size() + 1 << ". Add new card\n";
+        cout << cards.size() + 2 << ". Cancel\n";
+        cout << "Select option: ";
 
         int choice;
-        std::cin >> choice;
+        cin >> choice;
 
-        if (std::cin.fail() || choice < 1 || choice >(int)cards.size() + 2) {
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Invalid choice. Try again.\n";
+        if (cin.fail() || choice < 1 || choice >(int)cards.size() + 2) 
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+            cout << "Invalid choice. Try again.\n";
             system("pause");
+
             continue;
         }
 
-        if (choice == (int)cards.size() + 1) {
+        if (choice == (int)cards.size() + 1)
+        {
             addNewCard();
             continue;
         }
-        else if (choice == (int)cards.size() + 2) {
+
+        else if (choice == (int)cards.size() + 2)
+        {
             return -1;
         }
-        else {
+
+        else
+        {
             return choice - 1;
         }
     }
 }
 
 // Allows the user to enter a new card's information and saves it
-void CardManager::addNewCard() {
+void CardManager::addNewCard() 
+{
     system("cls");
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     Card newCard;
 
-    std::cout << "Enter a name for this card: ";
-    std::getline(std::cin, newCard.cardName);
+    cout << "Enter a name for this card: ";
+    getline(cin, newCard.cardName);
 
-    std::cout << "Enter card number: ";
-    std::getline(std::cin, newCard.cardNumber);
+    cout << "Enter card number: ";
+    getline(cin, newCard.cardNumber);
 
-    std::cout << "Enter expiry date (MM/YY): ";
-    std::getline(std::cin, newCard.expiryDate);
+    cout << "Enter expiry date (MM/YY): ";
+    getline(cin, newCard.expiryDate);
 
-    std::string cvv;
-    std::cout << "Enter CVV: ";
-    std::getline(std::cin, cvv);
+    string cvv;
+    cout << "Enter CVV: ";
+    getline(cin, cvv);
 
     cards.push_back(newCard);
     saveCards();
 
-    std::cout << "\nCard added successfully!\n";
+    cout << "\nCard added successfully!\n";
     system("pause");
 }
 
 // Provides access to the current list of loaded cards
-const std::vector<Card>& CardManager::getCards() const {
+const vector<Card>& CardManager::getCards() const 
+{
     return cards;
 }

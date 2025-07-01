@@ -3,3 +3,8 @@ Hall: Hall 2
 Movie: Inside Out 2
 Showtime: 17:00
 BookedSeats: 83
+Theater: Cinema (North)
+Hall: 3
+Movie: Mission: Impossible – Dead Reckoning Part One
+Showtime: 19:30
+BookedSeats: 10
