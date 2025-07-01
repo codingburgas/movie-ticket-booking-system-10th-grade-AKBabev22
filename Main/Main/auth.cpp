@@ -54,11 +54,11 @@ void registerUser()
 
     system("cls");
 
-    cout << "Registration successful!" << endl;
+    cout << "Registration successful! Please log in." << endl;
 
     system("pause");
 
-    mainMenu(username);
+    authMenu();
 }
 
 bool isSessionValid(string& loggedInUser)

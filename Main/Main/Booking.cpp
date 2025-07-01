@@ -298,7 +298,6 @@ void startBookingFlow()
                 saveTicket(username, selectedTheater.name, hallName, selectedMovie.title, selectedSeat + 1, purchaseDate);
 
                 std::cout << "\nPayment successful! Booking confirmed and ticket saved.\n";
-                system("pause");
 
                 return;
             }
